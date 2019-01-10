@@ -13,7 +13,8 @@ Vagrant.configure("2") do |config|
     config.vm.network "public_network"
 
     config.vm.provision "ansible" do |ansible|
-      ansible.verbose = true
-      ansible.playbook = "tests/vagrant.yml"
+      # ansible.verbose = true
+      ansible.playbook = "tests/test.yml"
+      ansible.extra_vars = { ansible_python_interpreter: '/usr/bin/python3' }
     end
 end
