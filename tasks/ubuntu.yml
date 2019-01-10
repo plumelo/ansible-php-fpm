@@ -1,0 +1,6 @@
+---
+
+- name: Add PPA repository (Ubuntu)
+  apt_repository:
+    repo: ppa:ondrej/php
+    update_cache: true
