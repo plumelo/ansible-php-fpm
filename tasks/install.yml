@@ -1,0 +1,15 @@
+---
+
+- name: Install the php packages (APT)
+  apt:
+    name: '{{ php_fpm_apt_packages }}'
+    state: >-
+      {% if php_fpm_apt_latest is defined
+      and php_fpm_apt_latest == true %}latest{% else %}present{% endif %}
+    update_cache: true
+    cache_valid_time: '{{ apt_cache_valid_time }}'
+  environment: '{{ env }}'
+  when: ansible_os_family == 'Debian'
+  notify:
+    - restart php-fpm
+  tags: [packages, php, fpm]

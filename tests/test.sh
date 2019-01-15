@@ -10,7 +10,7 @@ cd $PWD;
 # Declare the variables
 distributions="ubuntu debian"
 ubuntu_versions="14.04 16.04"
-debian_versions="8 9"
+debian_versions="9"
 php_versions="5.6 7.0 7.1"
 #php_versions="7.0" # For testing
 force_build="false"

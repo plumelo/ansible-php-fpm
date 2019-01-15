@@ -1,23 +1,33 @@
-# test.yml
 ---
+
 - hosts: all
+  become: true
   vars:
+    php_fpm_ini_path: /etc/php/{{ php_fpm_version }}/fpm/php.ini
+    php_fpm_config_path: /etc/php/{{ php_fpm_version }}/fpm/php-fpm.conf
+    php_fpm_pool_d: /etc/php/{{ php_fpm_version }}/fpm/pool.d
+
+    php_fpm_binary_name: php-fpm{{ php_fpm_version }}
+    php_fpm_service_name: php{{ php_fpm_version }}-fpm
+
+    php_fpm_pid_file: /var/run/php/php{{ php_fpm_version }}-fpm.pid
+
     php_fpm_pools:
-     - name: foo
-       user: www-data
-       group: www-data
-       listen: 7000
-       chdir: /
-     - name: bar
-       user: www-data
-       group: www-data
-       listen_port: 8000
-       chdir: /
-     - name: baz
-       user: www-data
-       group: www-data
-       listen_host: 127.0.0.1
-       listen_port: 9000
-       chdir: /
+      - name: foo
+        user: www-data
+        group: www-data
+        listen: 7000
+        chdir: /
+      - name: bar
+        user: www-data
+        group: www-data
+        listen_port: 8000
+        chdir: /
+      - name: baz
+        user: www-data
+        group: www-data
+        listen_host: 127.0.0.1
+        listen_port: 9000
+        chdir: /
   roles:
     - role_under_test
